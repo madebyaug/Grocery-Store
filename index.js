@@ -21,63 +21,110 @@ const inventory = [
 
 // === Complete the functions below! ===
 
-/**
+/** FINISHED
  * Prints out the name of each item in the given array.
  * @param {Item[]} items - array of items
  */
 function logNames(items) {
   // TODO: use `forEach`
+  items.forEach((item) => {
+    console.log(item.name);
+  });
 }
 
-/**
+/** FINISHED
+ * Prints out the Uppercase name of each item in the given array.
  * @param {Item[]} items - array of items
  * @returns {string[]} an array of item names in all uppercase
  */
 function getUppercaseNames(items) {
   // TODO: use `map`
+  const uppercase = items.map((item) => {
+    return item.name.toUpperCase();
+  });
+  return uppercase;
 }
 
-/**
+/** FINISHED
+ * The item with id "Number" is: "Item Name"
  * @param {Item[]} items - array of items
  * @param {number} id - id of the item to find
  * @returns {Item} - the item in `items` with the given `id`
  */
 function getItemById(items, id) {
   // TODO: use `find`
+  // Find Item from Id prompt
+  const foundItem = items.find((item) => {
+    if (item.id === id) {
+      return true;
+    }
+    return false;
+  });
+  return foundItem;
 }
 
-/**
+/** FINISHED
+ * The price of "Item.Name" is "Item.Price"
  * @param {Item[]} items - array of items
  * @param {string} name - name of the item to find
  * @returns {number} the price of the item named `name` if found
  */
 function getItemPriceByName(items, name) {
   // TODO: use a loop!
+  // Use prompt "Item.Name" to locate same named item
+  const locatedItemPrice = items.find((item) => {
+    if (item.name === name) {
+      // If conditions matches
+      return true;
+    }
+    return false;
+  });
+  // return the locatedItem.Price
+  return locatedItemPrice.price;
 }
 
-/**
+/** FINISHED
  * @param {Item[]} items - array of items
  * @param {string} category
  * @returns {Item[]} array of items that belong to the given `category`
  */
 function getItemsByCategory(items, category) {
   // TODO: use `filter`
+  const foundCategories = items.filter((item) => {
+    // Get "Category" from "Item" and Repeat for each "Item"
+    return item.category;
+  });
+
+  return foundCategories;
 }
 
-/**
+/** FINISHED
+ * In total, we have "Number" items in stock.
  * @param {Item[]} items - array of items
  * @returns {number} the total quantity of all items
  */
 function countItems(items) {
   // TODO: use `reduce`
+  const filterQuantity = items.reduce((acc, currentQuantity, idx) => {
+    acc = acc + currentQuantity.quantity;
+    return acc;
+  }, 0);
+  return filterQuantity;
 }
 
-/**
+/** FINISHED
+ * It would cost "" to purchase everything in stock.
  * @param {Item[]} items - array of items
  * @returns {number} the cost of all given items
  */
 function getTotalPrice(items) {
   // TODO: use `reduce`
+  const filterCost = items.reduce((acc, currentPrice, idx) => {
+    // price (acc) equalls current price plus previous price
+    acc = acc + currentPrice.price;
+    return acc;
+  }, 0);
+  return filterCost;
 }
 
 // === READ BUT DO NOT CHANGE THE CODE BELOW ===
